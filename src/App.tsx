@@ -32,6 +32,50 @@ import {
 import { navItems, heroData, aboutData, skillsData, experienceData, contactDetails } from './content';
 import { Experience, Message, Skill } from './types';
 
+function AnimatedStat({ value, suffix, label, delay = 0, duration = 1100 }: { value: number; suffix: string; label: string; delay?: number; duration?: number }) {
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    let frameId = 0;
+    let startTime: number | null = null;
+
+    const animate = (timestamp: number) => {
+      if (startTime === null) {
+        startTime = timestamp;
+      }
+
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(value * eased));
+
+      if (progress < 1) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const timeoutId = window.setTimeout(() => {
+      frameId = window.requestAnimationFrame(animate);
+    }, delay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [delay, duration, value]);
+
+  return (
+    <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
+      <span className="block text-xl sm:text-2xl font-bold text-primary">
+        {display}{suffix}
+      </span>
+      <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -399,24 +443,9 @@ export default function App() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="grid grid-cols-3 gap-2 sm:gap-4 max-w-md pt-2"
             >
-              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-xl sm:text-2xl font-bold text-primary">7+</span>
-                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
-                  {lang === 'en' ? 'Years Exp' : "Années d'Exp"}
-                </span>
-              </div>
-              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-xl sm:text-2xl font-bold text-primary">100%</span>
-                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
-                  {lang === 'en' ? 'Bilingual' : 'Bilingue'}
-                </span>
-              </div>
-              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-xl sm:text-2xl font-bold text-primary">4+</span>
-                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
-                  {lang === 'en' ? 'Institutions' : 'Institutions'}
-                </span>
-              </div>
+              <AnimatedStat value={7} suffix="+" label={lang === 'en' ? 'Years Exp' : "Années d'Exp"} delay={120} duration={1600} />
+              <AnimatedStat value={100} suffix="%" label={lang === 'en' ? 'Bilingual' : 'Bilingue'} delay={220} duration={1400} />
+              <AnimatedStat value={4} suffix="+" label={lang === 'en' ? 'Institutions' : 'Institutions'} delay={320} duration={1600} />
             </motion.div>
  
             {/* CTAs */}
