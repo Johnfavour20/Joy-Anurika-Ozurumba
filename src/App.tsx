@@ -156,6 +156,15 @@ export default function App() {
     window.print();
   };
 
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Anurika Joy Ozurumba- Resume.1 docx.docx';
+    link.download = 'Anurika-Joy-Ozurumba-Resume.docx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Quick reply helper for the Inbox simulation
   const handleSimulateReply = (msgId: string, replyText: string) => {
     setMessages(prev =>
@@ -265,12 +274,12 @@ export default function App() {
 
             {/* CV Button */}
             <button
-              onClick={() => setShowCVModal(true)}
+              onClick={handleResumeDownload}
               className="bg-primary text-white px-5 py-2.5 rounded-xl font-sans text-xs font-semibold hover:bg-primary/95 transition-all shadow-sm flex items-center gap-2 cursor-pointer"
               id="download-cv-btn"
             >
               <Download className="w-3.5 h-3.5" />
-              {lang === 'en' ? 'Print / Save CV' : 'Imprimer / Sauver le CV'}
+              {lang === 'en' ? 'Download Resume' : 'Télécharger le CV'}
             </button>
           </div>
 
@@ -335,13 +344,13 @@ export default function App() {
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    setShowCVModal(true);
+                    handleResumeDownload();
                   }}
                   className="w-full bg-primary text-white py-3 rounded-xl font-sans text-sm font-semibold flex items-center justify-center gap-2"
                   id="mobile-cv-btn"
                 >
                   <Download className="w-4 h-4" />
-                  {lang === 'en' ? 'Print / Save CV' : 'Imprimer / Sauver le CV'}
+                  {lang === 'en' ? 'Download Resume' : 'Télécharger le CV'}
                 </button>
               </div>
             </motion.div>
