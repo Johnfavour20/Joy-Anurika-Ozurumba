@@ -115,37 +115,29 @@ export default function App() {
     e.preventDefault();
     setFormError('');
 
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setFormError(lang === 'en' ? 'All fields are required.' : 'Tous les champs sont obligatoires.');
+    if (!form.name.trim() || !form.message.trim()) {
+      setFormError(lang === 'en' ? 'Please provide your name and message.' : 'Veuillez fournir votre nom et votre message.');
       return;
     }
 
-    setIsSubmitting(true);
+    const phoneNumber = contactDetails.phone.replace(/[^\d]/g, '');
+    const label = lang === 'en' ? 'Hello Joy,' : 'Bonjour Joy,';
+    const bodyLines = [
+      label,
+      '',
+      form.message.trim(),
+    ];
 
-    // Simulate sending message
-    setTimeout(() => {
-      const newMessage: Message = {
-        id: `msg-${Date.now()}`,
-        name: form.name,
-        email: form.email,
-        message: form.message,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' (Just now)',
-        status: 'unread'
-      };
+    if (form.name.trim()) {
+      bodyLines.push('', lang === 'en' ? `Name: ${form.name.trim()}` : `Nom : ${form.name.trim()}`);
+    }
+    if (form.email.trim()) {
+      bodyLines.push(lang === 'en' ? `Email: ${form.email.trim()}` : `Email : ${form.email.trim()}`);
+    }
 
-      setMessages(prev => [newMessage, ...prev]);
-      setIsSubmitting(false);
-      setShowSubmitSuccess(true);
-      setForm({ name: '', email: '', message: '' });
-
-      // Automatically transition unread message status to "read" after 3 seconds, mimicking Joy reviewing it
-      setTimeout(() => {
-        setMessages(prev =>
-          prev.map(m => m.id === newMessage.id ? { ...m, status: 'read' } : m)
-        );
-      }, 4000);
-
-    }, 1200);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(bodyLines.join('\n'))}`;
+    window.open(whatsappUrl, '_blank');
+    setIsSubmitting(false);
   };
 
   const filteredExperiences = selectedTag
@@ -425,19 +417,23 @@ export default function App() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto"
             >
-              <a
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href="#experience"
                 className="bg-primary text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-sans text-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary/95 transition-all shadow-md active:scale-98 w-full sm:w-auto text-center"
               >
                 {heroData.ctaPrimary[lang]}
                 <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href="#contact"
                 className="border-2 border-secondary text-secondary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-sans text-sm font-semibold flex items-center justify-center hover:bg-secondary/5 transition-all active:scale-98 w-full sm:w-auto text-center"
               >
                 {heroData.ctaSecondary[lang]}
-              </a>
+              </motion.a>
             </motion.div>
           </div>
  
@@ -467,7 +463,13 @@ export default function App() {
       {/* About Section */}
       <section className="py-16 sm:py-24 bg-surface-container-low" id="about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-120px' }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start"
+          >
             
             {/* Header section */}
             <div className="w-full lg:w-1/3">
@@ -517,7 +519,7 @@ export default function App() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -526,7 +528,13 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           
           {/* Header block with search capabilities */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10 md:mb-16"
+          >
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-8 h-1 bg-secondary rounded-full"></span>
@@ -570,10 +578,16 @@ export default function App() {
                 </button>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Core skills cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             <AnimatePresence>
               {filteredSkills.map((skill) => (
                 <motion.div
@@ -582,6 +596,8 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
                   className="bg-white p-5 sm:p-6 rounded-2xl border border-surface-variant text-center space-y-4 shadow-xs hover:border-secondary transition-all flex flex-col justify-between card-elevation"
                 >
                   <div className="space-y-4">
@@ -623,11 +639,16 @@ export default function App() {
                 </div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Filter alert banner */}
           {selectedTag && (
-            <div className="mt-8 p-4 bg-surface-container-high rounded-xl border border-outline-variant flex items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="mt-8 p-4 bg-surface-container-high rounded-xl border border-outline-variant flex items-center justify-between"
+            >
               <span className="text-sm text-primary font-medium">
                 {lang === 'en' 
                   ? `Filtering resume by skill focus: "${selectedTag}"`
@@ -639,7 +660,7 @@ export default function App() {
               >
                 {lang === 'en' ? 'Show all experience' : 'Afficher toutes les expériences'}
               </button>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
@@ -648,7 +669,13 @@ export default function App() {
       <section className="py-16 sm:py-24 bg-surface-container-low" id="experience">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           
-          <div className="text-center mb-10 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10 md:mb-16"
+          >
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="w-8 h-1 bg-secondary rounded-full"></span>
               <span className="text-xs font-bold text-secondary uppercase tracking-widest">
@@ -664,10 +691,16 @@ export default function App() {
                 ? 'Highlighting leadership roles in academic governance, registry administration, and bilingual communications.'
                 : 'Mise en valeur de rôles de leadership dans la gouvernance universitaire, l\'administration et les communications bilingues.'}
             </p>
-          </div>
+          </motion.div>
 
           {/* Timeline flow */}
-          <div className="relative timeline-line space-y-12 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.55 }}
+            className="relative timeline-line space-y-12 max-w-4xl mx-auto"
+          >
             
             {filteredExperiences.map((exp, index) => {
                const isEven = index % 2 === 0;
@@ -678,6 +711,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.01 }}
                   className="relative flex flex-col md:flex-row items-start md:items-center md:justify-between pl-10 sm:pl-12 md:pl-0"
                 >
                   
@@ -755,7 +789,7 @@ export default function App() {
               );
             })}
 
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -765,7 +799,13 @@ export default function App() {
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
             
             {/* Contact details */}
-            <div className="w-full lg:w-1/2 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-120px' }}
+              transition={{ duration: 0.6 }}
+              className="w-full lg:w-1/2 space-y-8"
+            >
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-8 h-1 bg-secondary rounded-full"></span>
@@ -848,15 +888,24 @@ export default function App() {
                 <AlertCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-on-surface-variant leading-relaxed">
                   {lang === 'en' 
-                    ? "Joy handles all incoming inquiries using systematic registry practices. When you submit a message, it goes straight to her active queue. Check the top Inbox Simulator at any time to see your message in her real-time administrative workflow!"
-                    : "Joy gère toutes les demandes reçues selon des pratiques d'enregistrement rigoureuses. Votre message est envoyé directement à sa file d'attente active. Consultez le simulateur de messagerie en haut pour suivre votre demande !"}
+                    ? "Click Send to open WhatsApp and start a chat directly with Joy on +2349012572225. Your message will be prepared automatically in WhatsApp." 
+                    : "Cliquez sur Envoyer pour ouvrir WhatsApp et démarrer une conversation directement avec Joy au +2349012572225. Votre message sera automatiquement préparé dans WhatsApp."}
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form card */}
-            <div className="w-full lg:w-1/2">
-              <div className="bg-white p-5 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-surface-variant relative overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-120px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-full lg:w-1/2"
+            >
+              <motion.div
+                whileHover={{ y: -2 }}
+                className="bg-white p-5 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-surface-variant relative overflow-hidden"
+              >
                 
                 {/* Visual anchor background highlights */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl -z-10"></div>
@@ -917,7 +966,7 @@ export default function App() {
                     disabled={isSubmitting}
                     className="w-full bg-primary text-white py-4 rounded-xl font-sans text-xs font-bold uppercase tracking-wider hover:bg-primary/95 transition-all flex items-center justify-center gap-2 active:scale-98 cursor-pointer shadow-md disabled:opacity-50"
                   >
-                    <span>{isSubmitting ? (lang === 'en' ? 'Processing...' : 'Traitement...') : (lang === 'en' ? 'Send Message' : 'Envoyer le Message')}</span>
+                    <span>{isSubmitting ? (lang === 'en' ? 'Preparing WhatsApp...' : 'Préparation WhatsApp...') : (lang === 'en' ? 'Send on WhatsApp' : 'Envoyer sur WhatsApp')}</span>
                     <Send className="w-4 h-4" />
                   </button>
 
@@ -956,12 +1005,11 @@ export default function App() {
 
                 </form>
 
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Footer */}
       <footer className="bg-surface-container-low border-t border-outline-variant py-8 sm:py-12">

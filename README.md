@@ -1,12 +1,6 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
-# Run and deploy your AI Studio app
+## Run and deploy your portfolio app
 
 This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/8c0ef7e6-2e56-4634-b170-d84e59a805d0
 
 ## Run Locally
 
@@ -15,6 +9,8 @@ View your app in AI Studio: https://ai.studio/apps/8c0ef7e6-2e56-4634-b170-d84e5
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Run the app frontend locally:
    `npm run dev`
+3. Visit `http://localhost:3000`
+
+This site now directs contact messages via WhatsApp using the phone number shown in the Contact section.
