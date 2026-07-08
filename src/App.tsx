@@ -176,21 +176,28 @@ export default function App() {
       
       {/* Dynamic Announcement Banner regarding Bilingual Focus */}
       <div className="bg-primary text-white text-xs py-2 px-4 text-center font-mono tracking-wider flex justify-center items-center gap-2 border-b border-white/10">
-        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>
-          {lang === 'en' 
-            ? "ACTIVE RESUME: Bilingual French & English Workspace Integration" 
-            : "PORTFOLIO ACTIF: Intégration de l'espace de travail bilingue français et anglais"}
+        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+        <span className="text-center leading-tight">
+          <span className="hidden sm:inline">
+            {lang === 'en' 
+              ? "ACTIVE RESUME: Bilingual French & English Workspace Integration" 
+              : "PORTFOLIO ACTIF: Intégration de l'espace de travail bilingue français et anglais"}
+          </span>
+          <span className="sm:hidden text-[10px] font-bold">
+            {lang === 'en' 
+              ? "Bilingual French & English Active Resume" 
+              : "Portfolio Actif : Bilingue Français & Anglais"}
+          </span>
         </span>
       </div>
 
       {/* Top Navigation Bar */}
       <nav className="sticky top-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur-md shadow-sm transition-all duration-300">
-        <div className="flex justify-between items-center px-6 md:px-12 max-w-7xl mx-auto h-20">
+        <div className="flex justify-between items-center px-4 sm:px-6 md:px-12 max-w-7xl mx-auto h-20">
           
           {/* Logo / Name */}
           <div className="flex flex-col">
-            <span className="font-display text-lg md:text-xl font-bold tracking-tight text-primary">
+            <span className="font-display text-sm min-[380px]:text-base sm:text-lg md:text-xl font-bold tracking-tight text-primary whitespace-nowrap">
               Joy Anurika Ozurumba
             </span>
             <span className="text-[10px] text-secondary font-mono uppercase tracking-widest hidden sm:inline">
@@ -352,7 +359,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-10 pb-16 overflow-hidden bg-gradient-to-b from-surface-container-low to-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           
           {/* Hero text */}
           <div className="w-full lg:col-span-7 space-y-6 md:space-y-8">
@@ -365,7 +372,7 @@ export default function App() {
               <Languages className="w-4 h-4 text-secondary" />
               <span>{heroData.tag[lang]}</span>
             </motion.div>
-
+ 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -374,7 +381,7 @@ export default function App() {
             >
               {heroData.name}
             </motion.h1>
-
+ 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -383,57 +390,57 @@ export default function App() {
             >
               {heroData.title[lang]}
             </motion.p>
-
+ 
             {/* Key credentials metrics overlay */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-3 gap-4 max-w-md pt-2"
+              className="grid grid-cols-3 gap-2 sm:gap-4 max-w-md pt-2"
             >
-              <div className="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-2xl font-bold text-primary">7+</span>
-                <span className="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
+                <span className="block text-xl sm:text-2xl font-bold text-primary">7+</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
                   {lang === 'en' ? 'Years Exp' : "Années d'Exp"}
                 </span>
               </div>
-              <div className="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-2xl font-bold text-primary">100%</span>
-                <span className="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
+                <span className="block text-xl sm:text-2xl font-bold text-primary">100%</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
                   {lang === 'en' ? 'Bilingual' : 'Bilingue'}
                 </span>
               </div>
-              <div className="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant text-center">
-                <span className="block text-2xl font-bold text-primary">4+</span>
-                <span className="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              <div className="bg-surface-container-lowest p-2 sm:p-3 rounded-xl border border-outline-variant text-center">
+                <span className="block text-xl sm:text-2xl font-bold text-primary">4+</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider block leading-tight">
                   {lang === 'en' ? 'Institutions' : 'Institutions'}
                 </span>
               </div>
             </motion.div>
-
+ 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4 pt-2"
+              className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto"
             >
               <a
                 href="#experience"
-                className="bg-primary text-white px-8 py-4 rounded-xl font-sans text-sm font-semibold flex items-center gap-2 hover:bg-primary/95 transition-all shadow-md active:scale-98"
+                className="bg-primary text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-sans text-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary/95 transition-all shadow-md active:scale-98 w-full sm:w-auto text-center"
               >
                 {heroData.ctaPrimary[lang]}
                 <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#contact"
-                className="border-2 border-secondary text-secondary px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-secondary/5 transition-all active:scale-98"
+                className="border-2 border-secondary text-secondary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-sans text-sm font-semibold flex items-center justify-center hover:bg-secondary/5 transition-all active:scale-98 w-full sm:w-auto text-center"
               >
                 {heroData.ctaSecondary[lang]}
               </a>
             </motion.div>
           </div>
-
+ 
           {/* Hero portrait with modern layout */}
           <div className="w-full lg:col-span-5 flex justify-center">
             <motion.div
@@ -443,8 +450,8 @@ export default function App() {
               className="relative w-full max-w-[420px]"
             >
               {/* Background solid offset cards */}
-              <div className="absolute inset-0 bg-primary-container rounded-[2.5rem] rotate-3 -z-10 translate-x-4 translate-y-4"></div>
-              <div className="absolute inset-0 bg-secondary/15 rounded-[2.5rem] -rotate-3 -z-10 -translate-x-3 -translate-y-3"></div>
+              <div className="absolute inset-0 bg-primary-container rounded-[2.5rem] rotate-2 sm:rotate-3 -z-10 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4"></div>
+              <div className="absolute inset-0 bg-secondary/15 rounded-[2.5rem] -rotate-2 sm:-rotate-3 -z-10 -translate-x-2 sm:-translate-x-3 -translate-y-2 sm:-translate-y-3"></div>
               
               <img
                 src={heroData.profileImg}
@@ -458,9 +465,9 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-surface-container-low" id="about">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row gap-16 items-start">
+      <section className="py-16 sm:py-24 bg-surface-container-low" id="about">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
             
             {/* Header section */}
             <div className="w-full lg:w-1/3">
@@ -484,16 +491,16 @@ export default function App() {
             <div className="w-full lg:w-2/3 space-y-8">
               
               {/* Profile Quote */}
-              <div className="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-xs">
-                <p className="font-sans text-base sm:text-lg text-on-surface leading-relaxed italic border-l-4 border-primary pl-6 py-1">
+              <div className="bg-surface-container-lowest p-5 sm:p-8 rounded-2xl border border-outline-variant shadow-xs">
+                <p className="font-sans text-sm sm:text-base md:text-lg text-on-surface leading-relaxed italic border-l-4 border-primary pl-4 sm:pl-6 py-1">
                   "{aboutData.quote[lang]}"
                 </p>
               </div>
 
               {/* Grid features */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                 {aboutData.features.map((feature) => (
-                  <div key={feature.id} className="space-y-3 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:border-secondary/30 transition-all card-elevation">
+                  <div key={feature.id} className="space-y-3 bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-outline-variant hover:border-secondary/30 transition-all card-elevation">
                     <div className="flex items-center gap-3 text-primary">
                       <div className="bg-surface-container-high p-3 rounded-xl shadow-xs">
                         {feature.id === 'admin' ? <Briefcase className="w-6 h-6 text-primary" /> : <Laptop className="w-6 h-6 text-primary" />}
@@ -515,11 +522,11 @@ export default function App() {
       </section>
 
       {/* Skills / Professional Expertise Section */}
-      <section className="py-24 bg-background" id="skills">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-16 sm:py-24 bg-background" id="skills">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           
           {/* Header block with search capabilities */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10 md:mb-16">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-8 h-1 bg-secondary rounded-full"></span>
@@ -575,7 +582,7 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="bg-white p-6 rounded-2xl border border-surface-variant text-center space-y-4 shadow-xs hover:border-secondary transition-all flex flex-col justify-between card-elevation"
+                  className="bg-white p-5 sm:p-6 rounded-2xl border border-surface-variant text-center space-y-4 shadow-xs hover:border-secondary transition-all flex flex-col justify-between card-elevation"
                 >
                   <div className="space-y-4">
                     <div className="w-14 h-14 bg-surface-container mx-auto rounded-full flex items-center justify-center shadow-xs">
@@ -638,10 +645,10 @@ export default function App() {
       </section>
 
       {/* Experience Section / Career Journey Timeline */}
-      <section className="py-24 bg-surface-container-low" id="experience">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-16 sm:py-24 bg-surface-container-low" id="experience">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="w-8 h-1 bg-secondary rounded-full"></span>
               <span className="text-xs font-bold text-secondary uppercase tracking-widest">
@@ -663,15 +670,15 @@ export default function App() {
           <div className="relative timeline-line space-y-12 max-w-4xl mx-auto">
             
             {filteredExperiences.map((exp, index) => {
-              const isEven = index % 2 === 0;
-              return (
+               const isEven = index % 2 === 0;
+               return (
                 <motion.div
                   key={exp.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative flex flex-col md:flex-row items-center md:justify-between"
+                  className="relative flex flex-col md:flex-row items-start md:items-center md:justify-between pl-10 sm:pl-12 md:pl-0"
                 >
                   
                   {/* Left block: Date/Period on Desktop */}
@@ -681,8 +688,8 @@ export default function App() {
                     </span>
                   </div>
 
-                  {/* Centered timeline node */}
-                  <div className="z-10 w-10 h-10 bg-primary rounded-full border-4 border-white flex items-center justify-center shadow-lg md:order-2">
+                  {/* Centered timeline node - absolutely aligned on mobile, relative on desktop */}
+                  <div className="z-10 w-10 h-10 bg-primary rounded-full border-4 border-white flex items-center justify-center shadow-lg absolute left-0 top-6 md:relative md:left-auto md:top-auto md:order-2 flex-shrink-0">
                     {exp.icon === 'Briefcase' && <Briefcase className="w-4 h-4 text-white" />}
                     {exp.icon === 'GraduationCap' && <GraduationCap className="w-4 h-4 text-white" />}
                     {exp.icon === 'FileText' && <FileText className="w-4 h-4 text-white" />}
@@ -690,8 +697,8 @@ export default function App() {
                   </div>
 
                   {/* Right block: Card Content */}
-                  <div className={`w-full md:w-[45%] bg-white p-6 sm:p-8 rounded-2xl card-elevation border border-surface-variant mt-4 md:mt-0 ${
-                    isEven ? 'md:order-3 pl-8' : 'md:order-1 pr-8 text-left md:text-right'
+                  <div className={`w-full md:w-[45%] bg-white p-5 sm:p-8 rounded-2xl card-elevation border border-surface-variant mt-2 md:mt-0 ${
+                    isEven ? 'md:order-3 md:pl-8' : 'md:order-1 md:pr-8 text-left md:text-right'
                   }`}>
                     {/* Period badge for mobile */}
                     <div className="md:hidden mb-3">
@@ -753,9 +760,9 @@ export default function App() {
       </section>
 
       {/* Contact Section / Let's Connect */}
-      <section className="py-24 bg-surface-container-high" id="contact">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row gap-16">
+      <section className="py-16 sm:py-24 bg-surface-container-high" id="contact">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
             
             {/* Contact details */}
             <div className="w-full lg:w-1/2 space-y-8">
@@ -775,20 +782,20 @@ export default function App() {
               </div>
 
               {/* Contact info list */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 
                 {/* Email address */}
-                <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-outline-variant shadow-xs">
-                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white p-3.5 sm:p-4 rounded-xl border border-outline-variant shadow-xs">
+                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs flex-shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-sans text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
                       Email
                     </p>
                     <a
                       href={`mailto:${contactDetails.email}`}
-                      className="font-sans text-base text-primary font-bold hover:text-secondary transition-colors"
+                      className="font-sans text-sm sm:text-base text-primary font-bold hover:text-secondary transition-colors block break-all"
                     >
                       {contactDetails.email}
                     </a>
@@ -796,17 +803,17 @@ export default function App() {
                 </div>
 
                 {/* Telephone */}
-                <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-outline-variant shadow-xs">
-                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white p-3.5 sm:p-4 rounded-xl border border-outline-variant shadow-xs">
+                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs flex-shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-sans text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
                       {lang === 'en' ? 'Phone' : 'Téléphone'}
                     </p>
                     <a
                       href={`tel:${contactDetails.phone}`}
-                      className="font-sans text-base text-primary font-bold hover:text-secondary transition-colors"
+                      className="font-sans text-sm sm:text-base text-primary font-bold hover:text-secondary transition-colors block"
                     >
                       {contactDetails.phone}
                     </a>
@@ -814,11 +821,11 @@ export default function App() {
                 </div>
 
                 {/* Social LinkedIn */}
-                <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-outline-variant shadow-xs">
-                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white p-3.5 sm:p-4 rounded-xl border border-outline-variant shadow-xs">
+                  <div className="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary shadow-xs flex-shrink-0">
                     <Globe className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-sans text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
                       Social
                     </p>
@@ -826,10 +833,10 @@ export default function App() {
                       href="https://linkedin.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-sans text-base text-primary font-bold hover:text-secondary transition-colors flex items-center gap-1.5"
+                      className="font-sans text-sm sm:text-base text-primary font-bold hover:text-secondary transition-colors flex items-center gap-1.5"
                     >
-                      <Linkedin className="w-4 h-4 text-secondary" />
-                      {contactDetails.linkedin}
+                      <Linkedin className="w-4 h-4 text-secondary flex-shrink-0" />
+                      <span className="truncate">{contactDetails.linkedin}</span>
                     </a>
                   </div>
                 </div>
@@ -849,13 +856,13 @@ export default function App() {
 
             {/* Contact Form card */}
             <div className="w-full lg:w-1/2">
-              <div className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-surface-variant relative overflow-hidden">
+              <div className="bg-white p-5 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-surface-variant relative overflow-hidden">
                 
                 {/* Visual anchor background highlights */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl -z-10"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-xl -z-10"></div>
 
-                <form onSubmit={handleFormSubmit} className="space-y-6">
+                <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-6">
                   
                   {formError && (
                     <div className="p-4 bg-red-50 text-red-700 text-sm rounded-xl flex items-center gap-2">
@@ -864,7 +871,7 @@ export default function App() {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <label className="font-sans text-xs font-bold text-on-surface-variant ml-1 uppercase tracking-wider">
                         {lang === 'en' ? 'Name' : 'Nom'}
@@ -957,8 +964,8 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-surface-container-low border-t border-outline-variant py-12">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+      <footer className="bg-surface-container-low border-t border-outline-variant py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
           
           <div className="text-center md:text-left space-y-2">
             <span className="font-display text-lg font-bold text-primary block">
@@ -1006,24 +1013,24 @@ export default function App() {
       {/* MODAL 1: Simulated Inbox / Administrative Console Assistant */}
       <AnimatePresence>
         {showInboxAdmin && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-center p-4">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-start sm:items-center p-2 sm:p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant"
+              className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant my-8 sm:my-0"
             >
               {/* Header */}
-              <div className="bg-primary p-6 text-white flex justify-between items-center">
+              <div className="bg-primary p-4 sm:p-6 text-white flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                  <div className="bg-white/10 p-2.5 rounded-xl">
-                    <Inbox className="w-6 h-6 text-primary-fixed" />
+                  <div className="bg-white/10 p-2 sm:p-2.5 rounded-xl">
+                    <Inbox className="w-5 h-5 sm:w-6 sm:h-6 text-primary-fixed" />
                   </div>
                   <div>
-                    <h3 className="font-display text-lg font-bold">
+                    <h3 className="font-display text-base sm:text-lg font-bold">
                       {lang === 'en' ? 'Registry Inbox Simulator' : "Simulateur de Registre d'Entrée"}
                     </h3>
-                    <p className="text-xs text-on-primary-container font-mono uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs text-on-primary-container font-mono uppercase tracking-wider">
                       {lang === 'en' ? 'Admin Leader Panel' : 'Panneau Administratif'}
                     </p>
                   </div>
@@ -1033,12 +1040,12 @@ export default function App() {
                   className="bg-white/10 hover:bg-white/25 text-white p-2 rounded-xl transition-all"
                   id="close-inbox-simulator"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
 
               {/* Explanatory introduction */}
-              <div className="p-6 bg-surface-container-low border-b border-outline-variant">
+              <div className="p-4 sm:p-6 bg-surface-container-low border-b border-outline-variant">
                 <h4 className="text-sm font-bold text-primary flex items-center gap-1.5 mb-1">
                   <ShieldCheck className="w-4 h-4 text-secondary" />
                   {lang === 'en' ? 'Joy\'s Message Management System' : 'Système de gestion des messages'}
@@ -1051,47 +1058,48 @@ export default function App() {
               </div>
 
               {/* Messages list container */}
-              <div className="p-6 max-h-[400px] overflow-y-auto space-y-6">
+              <div className="p-4 sm:p-6 max-h-[320px] sm:max-h-[400px] overflow-y-auto space-y-4 sm:space-y-6">
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
-                    className="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant space-y-3 relative shadow-xs"
+                    className="p-4 sm:p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant space-y-3 relative shadow-xs"
                   >
-                    {/* Status Badge */}
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5">
-                      {msg.status === 'unread' && (
-                        <span className="bg-red-50 text-red-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                          {lang === 'en' ? 'Unread Queue' : 'Non lu'}
-                        </span>
-                      )}
-                      {msg.status === 'read' && (
-                        <span className="bg-amber-50 text-amber-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
-                          {lang === 'en' ? 'In Review' : 'En examen'}
-                        </span>
-                      )}
-                      {msg.status === 'replied' && (
-                        <span className="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                          <Check className="w-3 h-3 text-emerald-600" />
-                          {lang === 'en' ? 'Dispatched' : 'Répondu'}
-                        </span>
-                      )}
+                    {/* Status Badge responsive row layout */}
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-surface-container-high pb-3">
+                      <div className="space-y-1 min-w-0">
+                        <h4 className="text-sm font-bold text-primary truncate">{msg.name}</h4>
+                        <p className="text-xs text-on-surface-variant font-mono truncate">{msg.email}</p>
+                        <p className="text-[10px] text-on-surface-variant">{msg.timestamp}</p>
+                      </div>
+                      <div className="flex items-center gap-1.5 self-start sm:self-center">
+                        {msg.status === 'unread' && (
+                          <span className="bg-red-50 text-red-700 text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            {lang === 'en' ? 'Unread' : 'Non lu'}
+                          </span>
+                        )}
+                        {msg.status === 'read' && (
+                          <span className="bg-amber-50 text-amber-700 text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                            {lang === 'en' ? 'In Review' : 'En examen'}
+                          </span>
+                        )}
+                        {msg.status === 'replied' && (
+                          <span className="bg-emerald-50 text-emerald-700 text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
+                            <Check className="w-3 h-3 text-emerald-600" />
+                            {lang === 'en' ? 'Dispatched' : 'Répondu'}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="space-y-1">
-                      <h4 className="text-sm font-bold text-primary">{msg.name}</h4>
-                      <p className="text-xs text-on-surface-variant font-mono">{msg.email}</p>
-                      <p className="text-[10px] text-on-surface-variant">{msg.timestamp}</p>
-                    </div>
-
-                    <p className="text-xs text-on-surface leading-relaxed font-sans bg-background p-3.5 rounded-xl border border-outline-variant">
+                    <p className="text-xs text-on-surface leading-relaxed font-sans bg-background p-3 sm:p-3.5 rounded-xl border border-outline-variant">
                       {msg.message}
                     </p>
 
                     {/* Replies */}
                     {msg.reply ? (
-                      <div className="p-3.5 bg-emerald-50/50 border border-emerald-100 rounded-xl space-y-1">
+                      <div className="p-3 sm:p-3.5 bg-emerald-50/50 border border-emerald-100 rounded-xl space-y-1">
                         <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
                           <MessageSquare className="w-3 h-3" />
                           {lang === 'en' ? "Joy's Dispatched Response" : 'Réponse Envoyée par Joy'}
@@ -1101,7 +1109,7 @@ export default function App() {
                         </p>
                       </div>
                     ) : (
-                      <div className="pt-2 flex flex-wrap gap-2">
+                      <div className="pt-2 flex flex-col sm:flex-row gap-2">
                         <button
                           onClick={() => handleSimulateReply(
                             msg.id, 
@@ -1109,7 +1117,7 @@ export default function App() {
                               ? "Thank you for reaching out. I have catalogued your proposal in my registry and will schedule a meeting."
                               : "Merci pour votre message. J'ai répertorié votre proposition et je vais planifier un entretien."
                           )}
-                          className="bg-primary/5 text-primary text-[10px] font-bold px-3 py-1.5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all cursor-pointer"
+                          className="bg-primary/5 text-primary text-[10px] font-bold px-3 py-2 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all cursor-pointer text-center w-full sm:w-auto"
                         >
                           {lang === 'en' ? '🚀 Send Quick Thank-You' : '🚀 Envoyer Remerciement'}
                         </button>
@@ -1120,7 +1128,7 @@ export default function App() {
                               ? "Dear sender, I have received your request. I am happy to coordinate. Let us establish a formal video conference next week."
                               : "Cher expéditeur, j'ai bien reçu votre demande. Je suis ravie de collaborer. Planifions une visioconférence la semaine prochaine."
                           )}
-                          className="bg-secondary/5 text-secondary text-[10px] font-bold px-3 py-1.5 rounded-lg border border-secondary/25 hover:bg-secondary/10 transition-all cursor-pointer"
+                          className="bg-secondary/5 text-secondary text-[10px] font-bold px-3 py-2 rounded-lg border border-secondary/25 hover:bg-secondary/10 transition-all cursor-pointer text-center w-full sm:w-auto"
                         >
                           {lang === 'en' ? '📅 Schedule Videoconference' : '📅 Planifier Réunion'}
                         </button>
@@ -1138,7 +1146,7 @@ export default function App() {
               </div>
 
               {/* Footer */}
-              <div className="p-6 bg-surface-container border-t border-outline-variant flex justify-end gap-3">
+              <div className="p-4 sm:p-6 bg-surface-container border-t border-outline-variant flex flex-col sm:flex-row justify-end gap-2 sm:gap-3">
                 <button
                   onClick={() => {
                     const sampleMsg: Message = {
@@ -1151,13 +1159,13 @@ export default function App() {
                     };
                     setMessages(prev => [sampleMsg, ...prev]);
                   }}
-                  className="bg-secondary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-secondary/95 transition-all cursor-pointer shadow-xs"
+                  className="bg-secondary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-secondary/95 transition-all cursor-pointer shadow-xs text-center w-full sm:w-auto"
                 >
                   {lang === 'en' ? '+ Add French Inquiry' : '+ Ajouter une demande en Français'}
                 </button>
                 <button
                   onClick={() => setShowInboxAdmin(false)}
-                  className="bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-primary/95 transition-all cursor-pointer shadow-xs"
+                  className="bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-primary/95 transition-all cursor-pointer shadow-xs text-center w-full sm:w-auto"
                 >
                   {lang === 'en' ? 'Close Panel' : 'Fermer le Panneau'}
                 </button>
@@ -1170,26 +1178,26 @@ export default function App() {
       {/* MODAL 2: Printable/Shareable CV Presentation */}
       <AnimatePresence>
         {showCVModal && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-center p-4">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-start sm:items-center p-2 sm:p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant my-8"
+              className="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant my-4 sm:my-8"
             >
               {/* Actions Header Bar */}
-              <div className="bg-primary p-4 text-white flex justify-between items-center print:hidden">
-                <span className="font-display text-sm font-bold flex items-center gap-1.5">
-                  <Printer className="w-4 h-4 text-primary-fixed" />
-                  {lang === 'en' ? 'Print-Ready Resume' : 'Aperçu du CV Optimisé Impresson'}
+              <div className="bg-primary p-3.5 sm:p-4 text-white flex justify-between items-center print:hidden">
+                <span className="font-display text-xs sm:text-sm font-bold flex items-center gap-1.5 truncate">
+                  <Printer className="w-4 h-4 text-primary-fixed flex-shrink-0" />
+                  <span className="truncate">{lang === 'en' ? 'Print-Ready Resume' : 'Aperçu du CV Optimisé Impresson'}</span>
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     onClick={triggerPrint}
-                    className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+                    className="bg-white/10 hover:bg-white/20 text-white px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <Printer className="w-3.5 h-3.5" />
-                    {lang === 'en' ? 'Print Resume' : 'Imprimer'}
+                    <span className="hidden xs:inline">{lang === 'en' ? 'Print' : 'Imprimer'}</span>
                   </button>
                   <button
                     onClick={() => setShowCVModal(false)}
@@ -1201,46 +1209,46 @@ export default function App() {
               </div>
 
               {/* CV Document Container */}
-              <div className="p-8 sm:p-12 space-y-8 bg-white text-black" id="printable-cv-content">
+              <div className="p-4 sm:p-8 md:p-12 space-y-6 sm:space-y-8 bg-white text-black" id="printable-cv-content">
                 
                 {/* Header block */}
                 <div className="border-b-2 border-primary pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div>
-                    <h1 className="font-display text-3xl font-bold text-primary">{heroData.name}</h1>
-                    <p className="text-sm text-secondary font-semibold uppercase tracking-wider mt-1">
+                    <h1 className="font-display text-2xl sm:text-3xl font-bold text-primary leading-tight">{heroData.name}</h1>
+                    <p className="text-xs sm:text-sm text-secondary font-semibold uppercase tracking-wider mt-1">
                       {aboutData.subtitle[lang]}
                     </p>
                     <p className="text-xs text-on-surface-variant max-w-lg mt-2">
                       {heroData.title[lang]}
                     </p>
                   </div>
-                  <div className="text-left sm:text-right font-sans text-xs space-y-1 text-on-surface-variant">
-                    <p className="flex items-center sm:justify-end gap-1"><Mail className="w-3.5 h-3.5" /> {contactDetails.email}</p>
-                    <p className="flex items-center sm:justify-end gap-1"><Phone className="w-3.5 h-3.5" /> {contactDetails.phone}</p>
-                    <p className="flex items-center sm:justify-end gap-1"><Globe className="w-3.5 h-3.5" /> Lagos, Nigeria</p>
+                  <div className="text-left sm:text-right font-sans text-xs space-y-1 text-on-surface-variant w-full sm:w-auto">
+                    <p className="flex items-center sm:justify-end gap-1.5"><Mail className="w-3.5 h-3.5 flex-shrink-0" /> <span className="break-all">{contactDetails.email}</span></p>
+                    <p className="flex items-center sm:justify-end gap-1.5"><Phone className="w-3.5 h-3.5 flex-shrink-0" /> <span>{contactDetails.phone}</span></p>
+                    <p className="flex items-center sm:justify-end gap-1.5"><Globe className="w-3.5 h-3.5 flex-shrink-0" /> <span>Lagos, Nigeria</span></p>
                   </div>
                 </div>
 
                 {/* About Quote block */}
                 <div className="space-y-2">
-                  <h3 className="font-display text-sm font-bold text-primary uppercase tracking-wider">
+                  <h3 className="font-display text-xs sm:text-sm font-bold text-primary uppercase tracking-wider">
                     {lang === 'en' ? 'Professional Statement' : 'Résumé Professionnel'}
                   </h3>
-                  <p className="font-sans text-sm text-on-surface-variant leading-relaxed italic">
+                  <p className="font-sans text-xs sm:text-sm text-on-surface-variant leading-relaxed italic">
                     "{aboutData.quote[lang]}"
                   </p>
                 </div>
 
                 {/* Grid layout for skills & details */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
                   
                   {/* Left Column: Skills / Badges */}
                   <div className="md:col-span-4 space-y-6">
                     <div className="space-y-3">
-                      <h3 className="font-display text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
+                      <h3 className="font-display text-xs sm:text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
                         {lang === 'en' ? 'Expertise Areas' : 'Champs d\'Expertise'}
                       </h3>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-3">
                         {skillsData.map(s => (
                           <div key={s.id} className="text-xs">
                             <span className="font-bold text-primary block">{s.title[lang]}</span>
@@ -1251,31 +1259,31 @@ export default function App() {
                     </div>
 
                     <div className="space-y-3">
-                      <h3 className="font-display text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
+                      <h3 className="font-display text-xs sm:text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
                         {lang === 'en' ? 'Credentials / Tools' : 'Outils & Langues'}
                       </h3>
                       <div className="flex flex-wrap gap-1">
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">FRENCH NATIVE</span>
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">ENGLISH PROFESSIONAL</span>
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">GOOGLE WORKSPACE</span>
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">OFFICE 365</span>
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">REGISTRY PROTOCOLS</span>
-                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2.5 py-1 rounded">CALENDAR MGMT</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">FRENCH NATIVE</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">ENGLISH PROFESSIONAL</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">GOOGLE WORKSPACE</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">OFFICE 365</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">REGISTRY PROTOCOLS</span>
+                        <span className="bg-surface-container text-primary font-bold text-[9px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded">CALENDAR MGMT</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Right Column: Experience timeline */}
                   <div className="md:col-span-8 space-y-6">
-                    <h3 className="font-display text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
+                    <h3 className="font-display text-xs sm:text-sm font-bold text-primary uppercase tracking-wider border-b border-outline-variant pb-1">
                       {lang === 'en' ? 'Professional History' : 'Historique de Carrière'}
                     </h3>
-                    <div className="space-y-6">
+                    <div className="space-y-5">
                       {experienceData.map(exp => (
                         <div key={exp.id} className="space-y-1 text-xs">
-                          <div className="flex justify-between font-bold text-primary">
+                          <div className="flex flex-col xs:flex-row xs:justify-between font-bold text-primary gap-0.5">
                             <span>{exp.role[lang]}</span>
-                            <span className="text-secondary font-sans">{exp.period[lang]}</span>
+                            <span className="text-secondary font-sans font-medium text-[10px] sm:text-xs">{exp.period[lang]}</span>
                           </div>
                           <p className="text-secondary font-semibold font-sans">{exp.org[lang]}</p>
                           <p className="text-on-surface-variant leading-relaxed text-[11px] pt-1">
@@ -1300,10 +1308,10 @@ export default function App() {
               </div>
 
               {/* Close panel trigger */}
-              <div className="bg-surface-container p-4 flex justify-end gap-2 print:hidden">
+              <div className="bg-surface-container p-4 flex flex-col sm:flex-row justify-end gap-2 print:hidden">
                 <button
                   onClick={() => setShowCVModal(false)}
-                  className="bg-primary text-white text-xs font-bold px-5 py-2 rounded-xl hover:opacity-95 cursor-pointer"
+                  className="bg-primary text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:opacity-95 cursor-pointer text-center w-full sm:w-auto"
                 >
                   {lang === 'en' ? 'Close Resume' : 'Fermer le CV'}
                 </button>
@@ -1317,24 +1325,24 @@ export default function App() {
       {/* MODAL 3: Detailed Experience Description View */}
       <AnimatePresence>
         {selectedExperience && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-center p-4">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-start sm:items-center p-2 sm:p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-white w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant"
+              className="bg-white w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant my-8 sm:my-0"
             >
               {/* Header */}
-              <div className="bg-primary p-6 text-white flex justify-between items-center">
+              <div className="bg-primary p-4 sm:p-6 text-white flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                  <div className="bg-white/10 p-2.5 rounded-xl">
+                  <div className="bg-white/10 p-2 sm:p-2.5 rounded-xl">
                     <Briefcase className="w-5 h-5 text-primary-fixed" />
                   </div>
                   <div>
-                    <h3 className="font-display text-base font-bold">
+                    <h3 className="font-display text-sm sm:text-base font-bold leading-tight">
                       {lang === 'en' ? 'Role Specifications' : 'Spécifications du Poste'}
                     </h3>
-                    <p className="text-xs text-on-primary-container font-mono uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs text-on-primary-container font-mono uppercase tracking-wider truncate max-w-[180px] xs:max-w-none">
                       {selectedExperience.org[lang]}
                     </p>
                   </div>
@@ -1348,12 +1356,12 @@ export default function App() {
               </div>
 
               {/* Details Body */}
-              <div className="p-6 space-y-6">
+              <div className="p-4 sm:p-6 space-y-5 sm:space-y-6">
                 <div>
-                  <span className="font-sans text-xs font-bold text-secondary bg-secondary-fixed px-3 py-1 rounded-full">
+                  <span className="font-sans text-[10px] sm:text-xs font-bold text-secondary bg-secondary-fixed px-3 py-1 rounded-full">
                     {selectedExperience.period[lang]}
                   </span>
-                  <h4 className="font-display text-xl font-bold text-primary mt-3">
+                  <h4 className="font-display text-lg sm:text-xl font-bold text-primary mt-3 leading-tight">
                     {selectedExperience.role[lang]}
                   </h4>
                   <p className="text-secondary font-semibold text-sm mt-1">
@@ -1365,7 +1373,7 @@ export default function App() {
                   <h5 className="font-display text-xs font-bold text-primary uppercase tracking-wider">
                     {lang === 'en' ? 'Executive Description' : 'Description Exécutive'}
                   </h5>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
+                  <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
                     {selectedExperience.desc[lang]}
                   </p>
                 </div>
@@ -1395,20 +1403,20 @@ export default function App() {
               </div>
 
               {/* Footer */}
-              <div className="p-6 bg-surface-container border-t border-outline-variant flex justify-end gap-3">
+              <div className="p-4 sm:p-6 bg-surface-container border-t border-outline-variant flex flex-col sm:flex-row justify-end gap-2 sm:gap-3">
                 <button
                   onClick={() => {
                     const skillToFilter = selectedExperience.skills[0];
                     if (skillToFilter) setSelectedTag(skillToFilter);
                     setSelectedExperience(null);
                   }}
-                  className="bg-secondary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-secondary/95 transition-all cursor-pointer shadow-xs"
+                  className="bg-secondary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-secondary/95 transition-all cursor-pointer shadow-xs text-center w-full sm:w-auto"
                 >
                   {lang === 'en' ? 'Filter by these skills' : 'Filtrer par ces compétences'}
                 </button>
                 <button
                   onClick={() => setSelectedExperience(null)}
-                  className="bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-primary/95 transition-all cursor-pointer shadow-xs"
+                  className="bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-primary/95 transition-all cursor-pointer shadow-xs text-center w-full sm:w-auto"
                 >
                   {lang === 'en' ? 'Close Specifications' : 'Fermer les Spécifications'}
                 </button>
