@@ -458,11 +458,27 @@ export default function App() {
               <div className="absolute inset-0 bg-primary-container rounded-[2.5rem] rotate-2 sm:rotate-3 -z-10 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4"></div>
               <div className="absolute inset-0 bg-secondary/15 rounded-[2.5rem] -rotate-2 sm:-rotate-3 -z-10 -translate-x-2 sm:-translate-x-3 -translate-y-2 sm:-translate-y-3"></div>
               
-              <img
+              <motion.img
                 src={heroData.profileImg}
                 alt="Joy Anurika Ozurumba professional portrait"
                 className="w-full h-auto rounded-[2.5rem] object-cover card-elevation border-4 border-white aspect-[4/5] shadow-xl"
                 referrerPolicy="no-referrer"
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: [0, -8, 0],
+                  rotate: [0, 1, 0, -1, 0]
+                }}
+                transition={{
+                  opacity: { duration: 0.7 },
+                  scale: { duration: 0.7 },
+                  duration: 6,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                  ease: 'easeInOut'
+                }}
+                whileHover={{ scale: 1.02, y: -4 }}
               />
             </motion.div>
           </div>
